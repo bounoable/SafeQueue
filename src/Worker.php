@@ -34,7 +34,9 @@ use Throwable;
         EntityManager $entityManager,
         ExceptionHandler $exceptions
     ) {
-        parent::__construct($manager, $events, $exceptions);
+        parent::__construct($manager, $events, $exceptions, function () {
+            return false;
+        });
 
         $this->entityManager = $entityManager;
     }
