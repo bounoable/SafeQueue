@@ -4,16 +4,15 @@
 namespace MaxBrokman\SafeQueue;
 
 use Illuminate\Contracts\Cache\Repository as Cache;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 use MaxBrokman\SafeQueue\Console\WorkCommand;
 
 /**
  * @codeCoverageIgnore
  */
-class DoctrineQueueProvider extends ServiceProvider
+class DoctrineQueueProvider extends ServiceProvider implements DeferrableProvider
 {
-    protected $defer = true;
-
     /**
      * Register the service provider.
      *
