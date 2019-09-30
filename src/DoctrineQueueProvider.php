@@ -59,6 +59,7 @@ class DoctrineQueueProvider extends ServiceProvider
         $this->app->singleton('command.safeQueue.work', function ($app) {
             return new WorkCommand(
                 $app['safeQueue.worker'],
+                $app['cache'],
                 $app['config']->get('safequeue')
             );
         });
