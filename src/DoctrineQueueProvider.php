@@ -3,6 +3,7 @@
 
 namespace MaxBrokman\SafeQueue;
 
+use Illuminate\Contracts\Cache\Repository as Cache;
 use Illuminate\Support\ServiceProvider;
 use MaxBrokman\SafeQueue\Console\WorkCommand;
 
@@ -59,7 +60,7 @@ class DoctrineQueueProvider extends ServiceProvider
         $this->app->singleton('command.safeQueue.work', function ($app) {
             return new WorkCommand(
                 $app['safeQueue.worker'],
-                $app['cache'],
+                $app->make(Cache::class),
                 $app['config']->get('safequeue')
             );
         });
